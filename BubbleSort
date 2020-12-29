@@ -9,10 +9,10 @@ void BubbleSort(int Array[],int Length_of_array ){
     for(int j=0; j<Length_of_array-1-i; j++){    //每次需要比较的数组长度-1
       if( Array[j]>Array[j+1] ){
         swap(&Array[j], &Array[j+1]);
-      }
-    }
-  }
-}
+      }//if_end
+    }//j_for_end
+  }//i_for_end
+}//void_end
 
 //Pseudocode
 Bubble(A, n) //n=A.length
