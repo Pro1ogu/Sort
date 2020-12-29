@@ -1,0 +1,13 @@
+void InsertSort(int Array[],int Length_of_array){
+  int key,key_pos;
+  
+  for(int j=1; j<Length_of_array; j++){
+    key = Array[j];
+    key_pos = j-1;
+    while( (key_pos>=0)&&Array[key_pos]>key ){
+      Array[key_pos+1] = Array[key_pos]; //集体右移
+      key_pos--;
+    }
+    Array[key_pos+1] = key; 
+  }
+}
