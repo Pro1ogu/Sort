@@ -5,7 +5,7 @@ void InsertSort(int Array[],int Length_of_array){
     key = Array[j];
     key_pos = j-1;
     while( (key_pos>=0)&&Array[key_pos]>key ){
-      Array[key_pos+1] = Array[key_pos]; //集体右移
+      Array[key_pos+1] = Array[key_pos]; //集体右移 类比扑克牌
       key_pos--;
     }
     Array[key_pos+1] = key; 
