@@ -1,3 +1,4 @@
+//C
 void InsertSort(int Array[],int Length_of_array){
   int key,key_pos;
   
@@ -11,3 +12,14 @@ void InsertSort(int Array[],int Length_of_array){
     Array[key_pos+1] = key; 
   }
 }
+
+//Pseudocode
+InsertSort(A, n) //n=A.length
+  for i=0 to n-1
+    KEY <- A[i]
+    j <- i-1
+    while j>=0 and A[j]>KEY
+      do A[j+1] <- A[j]
+      j <- j-1
+    A[j+1] <- KEY
+  return A
