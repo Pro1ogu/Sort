@@ -1,10 +1,11 @@
+//C
 void swap(int *a, int *b){
   int temp = *a;
   *a = *b;
   *b = temp;
 }
 void BubbleSort(int Array[],int Length_of_array ){
-  for(int i=0; i<Length_of_array-1; i++){     //每次遍历可以确定一个当前数组的最大值，所以遍历n-2轮
+  for(int i=0; i<Length_of_array-1; i++){     //每次遍历可以确定一个当前数组的最大值，所以遍历n-1轮
     for(int j=0; j<Length_of_array-1-i; j++){    //每次需要比较的数组长度-1
       if( Array[j]>Array[j+1] ){
         swap(&Array[j], &Array[j+1]);
@@ -12,3 +13,12 @@ void BubbleSort(int Array[],int Length_of_array ){
     }
   }
 }
+
+//Pseudocode
+Bubble(A, n) //n=A.length
+  for i=0 to n-2
+    for j=0 to n-2-i
+      if A[j]>A[j+1]
+        exchange A[j] to A[j+1]
+  return A
+        
