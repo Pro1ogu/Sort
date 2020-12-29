@@ -8,10 +8,10 @@ void InsertSort(int Array[],int Length_of_array){
     while( (key_pos>=0)&&Array[key_pos]>key ){
       Array[key_pos+1] = Array[key_pos]; //集体右移 类比扑克牌
       key_pos--;
-    }
-    Array[key_pos+1] = key; 
-  }
-}
+    }//while_end
+    Array[key_pos+1] = key; //这里+1是因为在上面循环中key_pos最终位置在-1
+  }//for_end
+}//void_end
 
 //Pseudocode
 InsertSort(A, n) //n=A.length
