@@ -1,0 +1,16 @@
+//C
+void ShellSort(int Array[], int Length_of_array){
+  for(int gap=Length_of_array/2; gap>=1; gap=gap/2){ //就是在插入排序外面加一个大循环，每次改变gap值
+    int key,key_pos;
+    for(int j=gap; j<Length_of_array; j=j+gap){  //因为没有设立哨兵，数组从0开始，gap的位置就是每一组的第二个元素
+      key = Array[j];
+      key_pos = j-gap;
+      while( key_pos>=0 && Array[key_pos]>key ){
+        Array[key_pos+gap] = Array[key_pos];
+        key_pos = key_pos-gap;
+      }//while
+      Array[key_pos+gap] = key; 
+    }//j_for
+  }//gap_for
+}//void
+
