@@ -1,1 +1,29 @@
+//C
+void swap(int *a, int *b){
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+}
 
+void SelectionSort(int Array[],int Length_of_array){
+  int cur_min_pos;
+  for(int i=0; i<Length_of_array-1; i++){
+    cur_min_pos = i;
+    for(int j=i+1; j<Length_of_array; j++){
+      if( Array[j]<Array[cur_min_pos] ){
+        cur_min_pos = j;   //找到后面数列中最小的，记录位置
+      }//if_end
+    }//j_for_end
+    swap(&Array[i], &Array[cur_min_pos]);  //
+  }//i_for_end
+}//void_end
+
+//Pseudocode
+SelectSort(A,n)
+  for i=0 to n-1
+    MININDEX <- i
+    for j=i+1 to n
+      if A[j]<A[MININDEX]
+        MININDEX <- j
+    exchange A[j] to A[i]
+  return A
