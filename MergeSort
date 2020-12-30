@@ -1,0 +1,35 @@
+//C
+int Array_cl[10];  //要额外创建一个和元数组等长的数组用于保存
+
+void Merge(int Array[], int front, int mid, int rear){     //合并过程
+  //int cur_len_Array = rear-front+1;
+  //int *Array_2 = (int *)malloc(cur_len_Array*sizeof(int));
+  
+  int pointer;
+  for(pointer=front; pointer<=rear; pointer++){
+    Array_cl[pointer] = Array[pointer]; //数组复制
+  }
+
+  int ptr_l, ptr_r;
+  for(ptr_l=front, ptr_r=mid+1, pointer=front; ptr_l<=mid && ptr_r<=rear; pointer++){
+    if(Array_cl[ptr_l]<=Array_cl[ptr_r]){  //按大小重新覆盖元数组
+      Array[pointer] = Array_cl[ptr_l];
+      ptr_l++;
+    }else{
+      Array[pointer] = Array_cl[ptr_r];
+      ptr_r++;
+    }
+  }//for
+  while(ptr_l<=mid) Array[pointer++] = Array_cl[ptr_l++];   //右边元素粘贴完毕，要把左边剩下的粘贴回去
+  while(ptr_r<=rear) Array[pointer++] = Array_cl[ptr_r++];   //左边元素粘贴完毕，要把右边剩下的粘贴回去
+
+}//void
+
+void MergeSort(int Array[], int front, int rear){
+  if(front<rear){
+    int mid = (front+rear)/2;
+    MergeSort(Array, front, mid);
+    MergeSort(Array, mid+1, rear);
+    Merge(Array, front, mid, rear);
+  }//if
+}//void
