@@ -1,0 +1,41 @@
+//C
+
+void swap(int *a, int *b){
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+}
+
+void MaxHeapify(int Array[], int root, int Length_of_array){
+  Array[0] = Array[root];
+  for(int i=2*root; i<=Length_of_array; i=i*2){
+    if( i<Length_of_array && Array[i]<Array[i+1] ) //i<Length_of_array 为了保证有右孩子,没有右孩子就直接比左孩子
+      i++;  //指向数值较大的孩子
+    
+    if( Array[0]>=Array[i] ){
+      break; //父节点大于两个子节点，不用操作
+    }else{ 
+      Array[root] = Array[i]; //子节点中最大值当爹，元爹被覆盖
+      root = i; //ATTENTION!!!!!!!!!!!!!!! 最关键一步，要继续向下筛选
+    }//else
+
+  }//for
+
+  Array[root] = Array[0]; //筛选结束，把元爹叫回来
+  
+}//void
+
+
+void BulidMaxHeap(int Array[], int Length_of_array){
+  for(int i=Length_of_array/2; i>0; i--){  //最后一个父节点的位置，在此之后全是叶结点
+    MaxHeapify(Array, i, Length_of_array);
+  }
+}
+
+void HeapSort(int Array[], int Length_of_array){
+  BulidMaxHeap(Array, Length_of_array);
+  for(int i=Length_of_array; i>1; i--){
+    swap(&Array[1], &Array[i]);
+    MaxHeapify(Array, 1, i-1); //注意这里是i-1!!!!!!!!!!! 不是Length_of_array-1
+  }//for  
+}
