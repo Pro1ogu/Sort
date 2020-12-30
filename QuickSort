@@ -1,0 +1,30 @@
+//C
+void swap(int *a, int *b){
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+}
+
+int Partition(int a[], int low, int high){
+  int pivot=a[low];
+  while(low<high){
+    while(low<high && a[high]>=pivot){
+      --high; 
+    }swap(&a[high], &a[low]);//从前面开始找到第一个小于pivot的元素，放到low位置
+    
+    while(low<high && a[low]<=pivot){
+      ++low; 
+    }swap(&a[high], &a[low]);//从前面开始找到第一个大于pivot的元素，放到high位置
+    
+  }//low<high_while_end
+  a[low] = pivot;
+  return low;
+}//int_end
+
+void QuickSort(int a[], int low, int high){
+  if(low<high){
+    int bar = Partition1(a, low, high);
+    QuickSort1(a, low, bar-1); //对切割点左半部分快排
+    QuickSort1(a, bar+1, high); //对切割点右半部分快排
+  }
+}
