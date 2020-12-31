@@ -1,5 +1,4 @@
 //C
-
 void swap(int *a, int *b){
   int temp = *a;
   *a = *b;
@@ -25,7 +24,6 @@ void MaxHeapify(int Array[], int root, int Length_of_array){
   
 }//void
 
-
 void BulidMaxHeap(int Array[], int Length_of_array){
   for(int i=Length_of_array/2; i>0; i--){  //最后一个父节点的位置，在此之后全是叶结点
     MaxHeapify(Array, i, Length_of_array);
@@ -39,3 +37,32 @@ void HeapSort(int Array[], int Length_of_array){
     MaxHeapify(Array, 1, i-1); //注意这里是i-1!!!!!!!!!!! 不是Length_of_array-1
   }//for  
 }
+
+//Pseudocode
+HeapSort(A)
+  BulidMaxHeap(A,n)
+  for i=n downto 1
+    exchange A[i] with A[1]
+    MaxHeapify(A,n-1)
+  return A
+
+BulidMaxHeap(A,n)
+  for i=n/2 downto 1
+    MaxHeapify(A,n)
+  return A
+
+MaxHeapify(A,n)
+  for i=1 to n/2
+    key = A[i]
+    max = i.left
+    if i.right > i.left
+      max = i.right
+    if key < max
+      exchange A[i] with A[max]
+      max = i
+  A[i] = key
+  return A;
+      
+  
+
+
